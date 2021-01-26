@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="grid-container heading-bar" [ngClass]="(minimized) ? 'minimize-widget' : 'maximize-widget'">
+        <div class="heading">
+            <div class="grid-item">Locations</div>
+        </div>
+        <div class="icons">
+            <img *ngIf="!collapsed" src="assets/minimize.png" height="20" width="20" (click)="onCollapse()">
+            <img *ngIf="collapsed" src="assets/maximize.png" height="20" width="20" (click)="onExpand()">
+            <img *ngIf="!minimized" src="assets/collapse.png" height="20" width="20" (click)="onMinimize()">
+            <img *ngIf="minimized" src="assets/expand.png" height="20" width="20" (click)="onMaximize()">
+        </div>
+    </div>
+
+    <div *ngIf="!collapsed" class="details">
+        <div class="grid-container">
+            <div class="search">
+                <input type="text" placeholder="Filter Locations" (input)="onFilterLocations($event)" />
+            </div>
+        </div>
+
+        <div class="clear" (click)="onClearAll()">
+            <img src="assets/cross.png" height="13" width="13"> Clear All
+        </div>
+
+        <div class="grid-container data">
+            <div class="location">
+                <div *ngFor="let loc of locations;">
+                    <input type="checkbox" id="{{loc.firstLetter}}" name="{{loc.locName}}" value="{{loc.locName}}" [(ngModel)]="loc.checked"/>
+                    <label for="{{loc.locName}}">{{loc.locName}}</label><br>
+                </div>
+            </div>
+            <div class="index">
+                <div *ngFor="let letter of index;" (click)="onIndexClick($event)">
+                    <a href="#{{letter}}">{{letter}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
