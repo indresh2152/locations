@@ -87,6 +87,7 @@ export class LocationsComponent implements OnInit {
 
   onMaximize() {
     this.minimized = false;
+    this.collapsed = false;
   }
 
   onCollapse() {

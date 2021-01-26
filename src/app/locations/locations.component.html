@@ -5,7 +5,7 @@
         </div>
         <div class="icons">
             <img *ngIf="!collapsed" src="assets/minimize.png" height="20" width="20" (click)="onCollapse()">
-            <img *ngIf="collapsed" src="assets/maximize.png" height="20" width="20" (click)="onExpand()">
+            <img *ngIf="collapsed && !minimized" src="assets/maximize.png" height="20" width="20" (click)="onExpand()">
             <img *ngIf="!minimized" src="assets/collapse.png" height="20" width="20" (click)="onMinimize()">
             <img *ngIf="minimized" src="assets/expand.png" height="20" width="20" (click)="onMaximize()">
         </div>
